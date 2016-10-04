@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Geolocation</title>
+</head>
+<body>
+<section id="location"><input type="button" id="getlocation" value="Get my location"></section>
+<script>
+        var get = document.getElementById('getlocation');
+        get.addEventListener('click', getlocation);
+
+    function getlocation() {
+        navigator.geolocation.getCurrentPosition(showinfo, showerror);
+    }
+    function showinfo(position) {
+        var location = document.getElementById('location');
+        var mapurl = 'http://maps.googleapis.com/maps/api/staticmap?center=' + position.coords.latitude + ',' + position.coords.longitude + '&zoom=16   &size=400x400&path=weight:3%7Ccolor:blue%7Cenc:{coaHnetiVjM??_SkM??~R&key=AIzaSyAl0rq4YxCMjYf9Mt7ZN7BU_BvYQD7uPaE';
+        location.innerHTML = '<img src="' + mapurl + '">';
+    }
+
+    function showerror(error) {
+        alert('Error: ' + error.code + ' ' + error.message);
+    }
+</script>
+</body>
+</html>
